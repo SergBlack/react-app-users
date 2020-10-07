@@ -1,10 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Users from './pages/Users';
+import UserShow from './pages/UserShow';
 
 function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Switch>
+          <Route path={'/'} exact component={Users} />
+          <Route path={'/user/:id'} exact component={UserShow} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
