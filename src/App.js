@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Users from './pages/Users';
+import './App.scss'
+import Users from './pages/Users/Users';
 import UserShow from './pages/UserShow';
 
 function App() {

@@ -1,0 +1,48 @@
+.user_card {
+  display: flex;
+  flex: 0 0 auto;
+  height: 240px;
+  width: 240px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 2px 4px 8px;
+  cursor: pointer;
+  margin: 14px;
+}
+
+.user_card:hover {
+  box-shadow: rgba(0, 0, 0, 0.12) 0 8px 8px;
+}
+
+.user_card-avatarContainer {
+  display: flex;
+  width: 120px;
+  height: 120px;
+  padding: 12px 0;
+}
+
+.user_card-avatar {
+  border-radius: 50%;
+}
+
+.user_card-attrsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 12px 0;
+}
+
+.user_card-attrsContainer span{
+  color: rgb(180, 186, 188);
+  font-family: GilroyBold, sans-serif;
+  font-size: 12px;
+}
+
+.user_card-email,
+.user_card-first_name,
+.user_card-last_name {
+  font-family: Gilroy Regular, sans-serif;
+  font-size: 14px;
+  padding: 3px;
+}

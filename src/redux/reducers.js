@@ -9,7 +9,7 @@ export const usersReducer = (state = initialState, action) => {
     case acts.FETCH_USERS: {
       return {
         ...state,
-        users: action.payload,
+        users: [...action.payload],
       }
     }
     default: return state;
