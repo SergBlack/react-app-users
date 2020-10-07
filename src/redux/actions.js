@@ -9,5 +9,5 @@ export const fetchUsers = () => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 };

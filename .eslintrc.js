@@ -22,5 +22,8 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "comma-dangle": ["error", "always-multiline"],
+        "semi": ["error", "always"],
+        'object-curly-spacing': ["error", "always"],
     }
 };

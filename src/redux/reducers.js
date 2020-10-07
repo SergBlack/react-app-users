@@ -10,7 +10,7 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: [...action.payload],
-      }
+      };
     }
     default: return state;
   }

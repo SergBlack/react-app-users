@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './UserCard.scss';
 
-const UserCard = ({ user: { avatar, email, first_name, last_name} }) => {
+const UserCard = ({ user: { avatar, email, first_name, last_name } }) => {
   return (
     <div className="user_card">
       <div className="user_card-avatarContainer">
@@ -20,11 +20,11 @@ const UserCard = ({ user: { avatar, email, first_name, last_name} }) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 UserCard.propTypes = {
   user: PropTypes.object,
-}
+};
 
 export default UserCard;
