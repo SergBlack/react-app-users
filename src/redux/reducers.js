@@ -33,6 +33,21 @@ export const usersReducer = (state = initialState, action) => {
         currentPage: page,
       };
     }
+    case acts.ADD_USER: {
+      const { id, name, job, createdAt } = action.payload;
+      return {
+        ...state,
+        users: [
+          ...state.users,
+          {
+            id,
+            first_name: name,
+            job,
+            createdAt,
+          },
+        ],
+      };
+    }
     default: return state;
   }
 };

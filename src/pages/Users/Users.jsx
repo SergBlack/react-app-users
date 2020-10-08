@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import './Users.scss';
-import { fetchUsers, setSelectedPage } from '../../redux/actions';
+import { fetchUsers, setSelectedPage, addUser } from '../../redux/actions';
 import UserCard from '../../components/UserCard/UserCard';
 import Pagination from '../../components/Pagination/Pagination';
 import AddUserButton from '../../components/AddUserButton/AddUserButton';
 
-const Users = ({ users, currentPage, totalPages, setSelectedPage }) => {
+const Users = ({
+  users, currentPage, totalPages, setSelectedPage, addUser,
+}) => {
 
   useEffect(() => {
     fetchUsers();
@@ -20,6 +22,10 @@ const Users = ({ users, currentPage, totalPages, setSelectedPage }) => {
   };
 
   const getPagesList = (totalNumOfPages) => R.range(1, totalNumOfPages + 1);
+
+  const addNewUser = (name, job) => {
+    addUser(name, job);
+  };
 
   return (
     <div>
@@ -33,7 +39,9 @@ const Users = ({ users, currentPage, totalPages, setSelectedPage }) => {
           )
         }
       </div>
-      <AddUserButton onClick={() => console.log('click')}/>
+      <AddUserButton
+        onClick={() => addNewUser('Ryuk', 'Death god')}
+      />
       <Pagination
         page={currentPage}
         pagesList={getPagesList(totalPages)}
@@ -48,6 +56,7 @@ Users.propTypes = {
   currentPage: PropTypes.number,
   totalPages: PropTypes.number,
   setSelectedPage: PropTypes.func,
+  addUser: PropTypes.func,
 };
 
 Users.defaultProps = {
@@ -63,6 +72,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchUsers: dispatch(fetchUsers()),
   setSelectedPage: (page) => dispatch(setSelectedPage(page)),
+  addUser: (name, job) => dispatch(addUser(name, job)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

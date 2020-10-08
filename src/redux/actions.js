@@ -22,3 +22,21 @@ export const setSelectedPage = (page) => {
     }
   };
 };
+
+export const addUser = (name, job) => {
+  console.log('add')
+  return async dispatch => {
+    try {
+      const response = await axios.post(
+        `https://reqres.in/api/users`,
+        {
+          name,
+          job,
+        },
+      );
+      dispatch({ type: acts.ADD_USER, payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
