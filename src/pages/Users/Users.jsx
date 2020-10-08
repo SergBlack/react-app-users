@@ -8,6 +8,8 @@ import {
   fetchUser as fetchUserAction,
   setSelectedPage as setSelectedPageAction,
   addUser as addUserAction,
+  updateUser as updateUserAction,
+  removeUser as removeUserAction,
 } from '../../redux/actions';
 import UserCard from '../../components/UserCard/UserCard';
 import Pagination from '../../components/Pagination/Pagination';
@@ -25,6 +27,8 @@ const Users = ({
   fetchUser,
   setSelectedPage,
   addUser,
+  updateUser,
+  removeUser,
   loading,
 }) => {
 
@@ -54,18 +58,30 @@ const Users = ({
     setIsOpenModal(false);
   };
 
+  const onUpdateUser = (id, name, job = 'none') => {
+    if (name !== currentUser.first_name){
+      updateUser(id, name, job);
+    }
+    onModalClose();
+  };
+
+  const onDeleteUser = (id) => {
+    removeUser(id);
+    onModalClose();
+  };
+
   return (
     <div>
       <div className="modal_container">
         <Modal
           isOpen={isOpenModal}
           onClose={onModalClose}
-          onDelete={() => {}}
-          onSave={() => {}}
         >
           <UserProfileCard
             user={currentUser}
             loading={loading}
+            onDelete={onDeleteUser}
+            onUpdate={onUpdateUser}
           />
         </Modal>
       </div>
@@ -111,6 +127,8 @@ Users.propTypes = {
   fetchUser: PropTypes.func,
   setSelectedPage: PropTypes.func,
   addUser: PropTypes.func,
+  updateUser: PropTypes.func,
+  removeUser: PropTypes.func,
   loading: PropTypes.bool,
 };
 
@@ -131,6 +149,8 @@ const mapDispatchToProps = dispatch => ({
   fetchUser: (id) => dispatch(fetchUserAction(id)),
   setSelectedPage: (page) => dispatch(setSelectedPageAction(page)),
   addUser: (name, job) => dispatch(addUserAction(name, job)),
+  updateUser: (id, name, job) => dispatch(updateUserAction(id, name, job)),
+  removeUser: (id) => dispatch(removeUserAction(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

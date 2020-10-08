@@ -7,21 +7,23 @@ import Button from '../Button/Button';
 import Preloader from '../Preloader/Preloader';
 
 const UserProfileCard = ({
-  user: { email, first_name, last_name, avatar },
+  user: { email, first_name, last_name, avatar, id },
   onDelete,
-  onSave,
+  onUpdate,
   loading,
 }) => {
   const [userMail, setUserMail] = useState('');
   const [userFirstName, setUserFirstName] = useState('');
-  const [useLastName, setUserLastName] = useState('');
+  const [userLastName, setUserLastName] = useState('');
 
   const handleFirstNameChange = (value) => {
     setUserFirstName(value);
   };
+
   const handleLastNameChange = (value) => {
     setUserLastName(value);
   };
+
   const handleEmailChange = (value) => {
     setUserMail(value);
   };
@@ -42,7 +44,7 @@ const UserProfileCard = ({
                 onChange={handleFirstNameChange}
               />
               <Input
-                value={useLastName || last_name}
+                value={userLastName || last_name}
                 id="last_name"
                 label="Last Name"
                 onChange={handleLastNameChange}
@@ -58,8 +60,12 @@ const UserProfileCard = ({
         )
       }
       <div className="user_profileCard_panelBtns">
-        <Button onClick={onDelete}>Удалить</Button>
-        <Button onClick={onSave}>Сохранить</Button>
+        <Button onClick={() => onDelete(id)}>Удалить</Button>
+        <Button
+          onClick={() => onUpdate(id, userFirstName || first_name)}
+        >
+          Сохранить
+        </Button>
       </div>
     </div>
   );
@@ -68,7 +74,7 @@ const UserProfileCard = ({
 UserProfileCard.propTypes = {
   user: PropTypes.object,
   onDelete: PropTypes.func,
-  onSave: PropTypes.func,
+  onUpdate: PropTypes.func,
   loading: PropTypes.bool,
 };
 

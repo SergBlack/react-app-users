@@ -47,13 +47,41 @@ export const addUser = (name, job) => {
   return async dispatch => {
     try {
       const response = await axios.post(
-        `https://reqres.in/api/users`,
+        'https://reqres.in/api/users',
         {
           name,
           job,
         },
       );
       dispatch({ type: acts.ADD_USER, payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+export const updateUser = (id, name, job) => {
+  return async dispatch => {
+    try {
+      const response = await axios.put(
+        `https://reqres.in/api/users${id}`,
+        {
+          name,
+          job,
+        },
+      );
+      dispatch({ type: acts.UPDATE_USER, payload: response.data, userId: id });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
+export const removeUser = (id) => {
+  return async dispatch => {
+    try {
+      await axios.delete(`https://reqres.in/api/users${id}`);
+      dispatch({ type: acts.REMOVE_USER, userId: id });
     } catch (e) {
       console.log(e);
     }
