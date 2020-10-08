@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './UserCard.scss';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 
-const UserCard = ({ user: { avatar, first_name } }) => {
+const UserCard = ({ user: { avatar, first_name }, onClick }) => {
   return (
-    <div className="user_card">
+    <div className="user_card" onClick={onClick}>
       <div className="user_card-avatarContainer">
         <img
           className="user_card-avatar"
@@ -22,6 +22,7 @@ const UserCard = ({ user: { avatar, first_name } }) => {
 
 UserCard.propTypes = {
   user: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 export default UserCard;

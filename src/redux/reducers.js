@@ -7,6 +7,7 @@ const initialState = {
   totalUsers: null,
   totalPages: null,
   ad: {},
+  currentUser: {},
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -23,6 +24,13 @@ export const usersReducer = (state = initialState, action) => {
         totalUsers: total,
         totalPages: total_pages,
         ad,
+      };
+    }
+    case acts.FETCH_USER: {
+      const { data } = action.payload;
+      return {
+        ...state,
+        currentUser: data,
       };
     }
     case acts.SET_SELECTED_PAGE: {

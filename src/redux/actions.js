@@ -12,6 +12,17 @@ export const fetchUsers = () => {
   };
 };
 
+export const fetchUser = (id) => {
+  return async dispatch => {
+    try {
+      const response = await axios.get(`https://reqres.in/api/users/${id}`);
+      dispatch({ type: acts.FETCH_USER, payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
 export const setSelectedPage = (page) => {
   return async dispatch => {
     try {
@@ -24,7 +35,6 @@ export const setSelectedPage = (page) => {
 };
 
 export const addUser = (name, job) => {
-  console.log('add')
   return async dispatch => {
     try {
       const response = await axios.post(
