@@ -3,33 +3,42 @@ import axios from 'axios';
 
 export const fetchUsers = () => {
   return async dispatch => {
+    dispatch({ type: acts.SHOW_PRELOADER });
     try {
       const response = await axios.get('https://reqres.in/api/users');
       dispatch({ type: acts.FETCH_USERS, payload: response.data });
+      dispatch({ type: acts.HIDE_PRELOADER });
     } catch (e) {
       console.log(e);
+      dispatch({ type: acts.HIDE_PRELOADER });
     }
   };
 };
 
 export const fetchUser = (id) => {
   return async dispatch => {
+    dispatch({ type: acts.SHOW_PRELOADER });
     try {
       const response = await axios.get(`https://reqres.in/api/users/${id}`);
       dispatch({ type: acts.FETCH_USER, payload: response.data });
+      dispatch({ type: acts.HIDE_PRELOADER });
     } catch (e) {
       console.log(e);
+      dispatch({ type: acts.HIDE_PRELOADER });
     }
   };
 };
 
 export const setSelectedPage = (page) => {
   return async dispatch => {
+    dispatch({ type: acts.SHOW_PRELOADER });
     try {
       const response = await axios.get(`https://reqres.in/api/users?page=${page}`);
       dispatch({ type: acts.SET_SELECTED_PAGE, payload: response.data });
+      dispatch({ type: acts.HIDE_PRELOADER });
     } catch (e) {
       console.log(e);
+      dispatch({ type: acts.HIDE_PRELOADER });
     }
   };
 };

@@ -14,6 +14,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import AddUserButton from '../../components/AddUserButton/AddUserButton';
 import Modal from '../../components/Modal/Modal';
 import UserProfileCard from '../../components/UserProfileCard/UserProfileCard';
+import Preloader from '../../components/Preloader/Preloader';
 
 const Users = ({
   users,
@@ -24,6 +25,7 @@ const Users = ({
   fetchUser,
   setSelectedPage,
   addUser,
+  loading,
 }) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -61,20 +63,29 @@ const Users = ({
           onDelete={() => {}}
           onSave={() => {}}
         >
-          <UserProfileCard user={currentUser}/>
+          <UserProfileCard
+            user={currentUser}
+            loading={loading}
+          />
         </Modal>
       </div>
       <div className="usersCards_container">
         {
-          R.map(
-            user => (
-              <UserCard
-                key={user.id}
-                user={user}
-                onClick={() => onUserCardClick(user.id)}
-              />
-            ),
-            users,
+          loading ? <Preloader /> : (
+            <>
+              {
+                R.map(
+                  user => (
+                    <UserCard
+                      key={user.id}
+                      user={user}
+                      onClick={() => onUserCardClick(user.id)}
+                    />
+                  ),
+                  users,
+                )
+              }
+            </>
           )
         }
       </div>
@@ -82,10 +93,11 @@ const Users = ({
         onClick={() => addNewUser('Artur', 'king')}
       />
       <Pagination
-        page={currentPage}
-        pagesList={getPagesList(totalPages)}
-        onPageChange={pageChange}
+      page={currentPage}
+      pagesList={getPagesList(totalPages)}
+      onPageChange={pageChange}
       />
+
     </div>
   );
 };
@@ -99,6 +111,7 @@ Users.propTypes = {
   fetchUser: PropTypes.func,
   setSelectedPage: PropTypes.func,
   addUser: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 Users.defaultProps = {
@@ -110,6 +123,7 @@ const mapStateToProps = state => ({
   currentPage: state.usersStore.currentPage,
   totalPages: state.usersStore.totalPages,
   currentUser: state.usersStore.currentUser,
+  loading: state.app.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
