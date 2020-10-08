@@ -1,3 +1,5 @@
+@import '../../scss/variables';
+
 .user_card {
   display: flex;
   flex: 0 0 auto;
@@ -32,7 +34,7 @@
   justify-content: flex-start;
   padding: 12px 0;
   span {
-    color: #b4babc;
+    color: $dark-grey-color;
     font-family: GilroyBold, sans-serif;
     font-size: 12px;
   }

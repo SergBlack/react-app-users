@@ -6,6 +6,7 @@ import './Users.scss';
 import { fetchUsers, setSelectedPage } from '../../redux/actions';
 import UserCard from '../../components/UserCard/UserCard';
 import Pagination from '../../components/Pagination/Pagination';
+import AddUserButton from '../../components/AddUserButton/AddUserButton';
 
 const Users = ({ users, currentPage, totalPages, setSelectedPage }) => {
 
@@ -32,6 +33,7 @@ const Users = ({ users, currentPage, totalPages, setSelectedPage }) => {
           )
         }
       </div>
+      <AddUserButton onClick={() => console.log('click')}/>
       <Pagination
         page={currentPage}
         pagesList={getPagesList(totalPages)}
