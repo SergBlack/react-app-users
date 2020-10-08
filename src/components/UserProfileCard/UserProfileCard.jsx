@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './UserProfileCard.scss';
-import defaultAvatar from '../../assets/defaultAvatar.png';
+import Avatar from '../Avatar/Avatar';
 
 const UserProfileCard = ({ user: { email, first_name, last_name, avatar } }) => {
   return (
     <div className="user_ProfileCard">
-      <div className="user_ProfileCard-avatarContainer">
-        <img
-          className="user_ProfileCard-avatar"
-          src={avatar ? avatar : defaultAvatar}
-          alt="avatar"
-        />
-      </div>
+      <Avatar avatar={avatar} type="squared"/>
       <div className="user_ProfileCard-attrs">
         <input
           className="user_ProfileCard-firstName"

@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './UserCard.scss';
-import defaultAvatar from '../../assets/defaultAvatar.png';
+import Avatar from '../Avatar/Avatar';
 
 const UserCard = ({ user: { avatar, first_name }, onClick }) => {
   return (
     <div className="user_card" onClick={onClick}>
-      <div className="user_card-avatarContainer">
-        <img
-          className="user_card-avatar"
-          src={avatar ? avatar : defaultAvatar}
-          alt="avatar"
-        />
-      </div>
+      <Avatar avatar={avatar} type="round"/>
       <div className="user_card-first_name">
         {first_name}
       </div>
