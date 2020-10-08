@@ -7,7 +7,6 @@ const AddUserButton = ({ onClick }) => (
     <div
       role="button"
       tabIndex="0"
-      style={{ outline: 'none' }}
       onClick={onClick}
       className="addUser_button"
     >

@@ -45,10 +45,6 @@ const Users = ({
 
   const getPagesList = (totalNumOfPages) => R.range(1, totalNumOfPages + 1);
 
-  const addNewUser = (name, job) => {
-    addUser(name, job);
-  };
-
   const onUserCardClick = (id) => {
     setIsOpenModal(true);
     fetchUser(id);
@@ -56,6 +52,12 @@ const Users = ({
 
   const onModalClose = () => {
     setIsOpenModal(false);
+  };
+
+  const addNewUser = (name, job) => {
+    if (!loading) {
+      addUser(name, job);
+    }
   };
 
   const onUpdateUser = (id, name, job = 'none') => {
@@ -134,6 +136,7 @@ Users.propTypes = {
 
 Users.defaultProps = {
   currentPage: 1,
+  loading: false,
 };
 
 const mapStateToProps = state => ({

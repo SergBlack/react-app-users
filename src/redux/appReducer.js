@@ -6,13 +6,13 @@ const initialState = {
 
 export const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case acts.SHOW_PRELOADER: {
+    case acts.START_LOADING: {
       return {
         ...state,
         loading: true,
       };
     }
-    case acts.HIDE_PRELOADER: {
+    case acts.END_LOADING: {
       return {
         ...state,
         loading: false,
