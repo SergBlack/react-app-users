@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Modal.scss';
-import Button from '../Button/Button';
 
-const Modal = ({ isOpen, children, onDelete, onSave, onClose }) => {
+const Modal = ({ isOpen, children, onClose }) => {
   return (
     <>
       {
@@ -16,10 +15,6 @@ const Modal = ({ isOpen, children, onDelete, onSave, onClose }) => {
               <div className="modal_body">
                 {children}
               </div>
-              <div className="modal_footer">
-                <Button onClick={onDelete}>Удалить</Button>
-                <Button onClick={onSave}>Сохранить</Button>
-              </div>
             </div>
           </div>
         )
@@ -31,8 +26,6 @@ const Modal = ({ isOpen, children, onDelete, onSave, onClose }) => {
 Modal.propTypes = {
   isOpen: PropTypes.bool,
   children: PropTypes.node,
-  onDelete: PropTypes.func,
-  onSave: PropTypes.func,
   onClose: PropTypes.func,
 };
 

@@ -16,7 +16,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $primary-color;
-  height: 500px;
+  height: 600px;
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -59,13 +59,8 @@
 
 .modal_body {
   display: flex;
-  flex: 1 0 auto;
-}
-
-.modal_footer {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  min-height: 60px;
-  padding: 10px 40px;
+  flex-direction: column;
+  flex: 1 0 auto;
 }

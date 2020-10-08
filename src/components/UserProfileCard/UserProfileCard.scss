@@ -1,16 +1,21 @@
-.user_ProfileCard {
+.user_profileCard {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex: 1 0 auto;
+  width: 100%;
 }
 
-.user_ProfileCard-attrs {
+.user_profileCard-attrs {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  margin-top: 30px;
+}
+
+.user_profileCard_panelBtns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
