@@ -36,7 +36,7 @@ const Users = ({
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   const pageChange = (page) => {
     if (currentPage === page) return;
