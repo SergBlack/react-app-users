@@ -1,0 +1,15 @@
+.pagination_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination_item {
+  margin: 5px;
+  color: #686e7a;
+}
+
+.pagination_item-active {
+  font-family: GilroyBold, sans-serif;
+  color: #000;
+}

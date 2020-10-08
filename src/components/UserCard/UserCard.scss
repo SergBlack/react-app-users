@@ -31,12 +31,11 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 12px 0;
-}
-
-.user_card-attrsContainer span{
-  color: rgb(180, 186, 188);
-  font-family: GilroyBold, sans-serif;
-  font-size: 12px;
+  span {
+    color: #b4babc;
+    font-family: GilroyBold, sans-serif;
+    font-size: 12px;
+  }
 }
 
 .user_card-email,
