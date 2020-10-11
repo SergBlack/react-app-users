@@ -68,7 +68,7 @@ export const updateUser = (id, name, job) => {
     dispatch({ type: acts.START_LOADING });
     try {
       const response = await axios.put(
-        `https://reqres.in/api/users${id}`,
+        `https://reqres.in/api/users/${id}`,
         {
           name,
           job,
@@ -87,7 +87,7 @@ export const removeUser = (id) => {
   return async dispatch => {
     dispatch({ type: acts.START_LOADING });
     try {
-      await axios.delete(`https://reqres.in/api/users${id}`);
+      await axios.delete(`https://reqres.in/api/users/${id}`);
       dispatch({ type: acts.REMOVE_USER, userId: id });
       dispatch({ type: acts.END_LOADING });
     } catch (e) {
