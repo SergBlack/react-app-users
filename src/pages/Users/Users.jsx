@@ -30,6 +30,7 @@ const Users = ({
   updateUser,
   removeUser,
   loading,
+  loadingUserProfile,
 }) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -81,7 +82,7 @@ const Users = ({
         >
           <UserProfileCard
             user={currentUser}
-            loading={loading}
+            loading={loadingUserProfile}
             onDelete={onDeleteUser}
             onUpdate={onUpdateUser}
           />
@@ -132,11 +133,13 @@ Users.propTypes = {
   updateUser: PropTypes.func,
   removeUser: PropTypes.func,
   loading: PropTypes.bool,
+  loadingUserProfile: PropTypes.bool,
 };
 
 Users.defaultProps = {
   currentPage: 1,
   loading: false,
+  loadingUserProfile: false,
 };
 
 const mapStateToProps = state => ({
@@ -145,6 +148,7 @@ const mapStateToProps = state => ({
   totalPages: state.usersStore.totalPages,
   currentUser: state.usersStore.currentUser,
   loading: state.app.loading,
+  loadingUserProfile: state.app.loadingUserProfile,
 });
 
 const mapDispatchToProps = dispatch => ({

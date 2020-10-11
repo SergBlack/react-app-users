@@ -17,14 +17,14 @@ export const fetchUsers = () => {
 
 export const fetchUser = (id) => {
   return async dispatch => {
-    dispatch({ type: acts.START_LOADING });
+    dispatch({ type: acts.START_LOADING_USER_PROFILE });
     try {
       const response = await axios.get(`https://reqres.in/api/users/${id}`);
       dispatch({ type: acts.FETCH_USER, payload: response.data });
-      dispatch({ type: acts.END_LOADING });
+      dispatch({ type: acts.END_LOADING_USER_PROFILE });
     } catch (e) {
       console.log(e);
-      dispatch({ type: acts.END_LOADING });
+      dispatch({ type: acts.END_LOADING_USER_PROFILE });
     }
   };
 };

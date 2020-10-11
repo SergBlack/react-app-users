@@ -4,22 +4,16 @@ import './Modal.scss';
 
 const Modal = ({ isOpen, children, onClose }) => {
   return (
-    <>
-      {
-        isOpen && (
-          <div className="modal_overlay">
-            <div className="modal_window">
-              <div className="modal_header">
-                <button className="modal_closeBtn" onClick={onClose}/>
-              </div>
-              <div className="modal_body">
-                {children}
-              </div>
-            </div>
-          </div>
-        )
-      }
-    </>
+    <div className="modal_overlay" style={{ display: isOpen ? 'block' : 'none' }}>
+      <div className="modal_window">
+        <div className="modal_header">
+          <button className="modal_closeBtn" onClick={onClose}/>
+        </div>
+        <div className="modal_body">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 };
 
